@@ -1,0 +1,72 @@
+package handler
+
+import (
+	"adopt-pethub/database"
+	"adopt-pethub/domain"
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"strconv"
+
+	"github.com/labstack/echo"
+)
+
+type BodyMessage struct {
+	Message string `json:"message"`
+}
+
+type Handler struct {
+	dbMethods dbInterface
+}
+
+func NewHandler(dbMethods dbInterface) Handler {
+	return Handler{
+		dbMethods: dbMethods,
+	}
+}
+
+type dbInterface interface {
+	GetConfirmedAppointments(string, *database.Database) ([]domain.Appointment, error)
+	ValidateAppointment(domain.Appointment, *database.Database) (*domain.Appointment, error)
+	DeleteAppointmentById(int, *database.Database) error
+}
+
+// Get appointments handles the request and returns all appointments booked
+func (h Handler) GetAppointments(c echo.Context, db *database.Database) error {
+	appointmentDate := c.QueryParam("date")
+	appointments, err := h.dbMethods.GetConfirmedAppointments(appointmentDate, db)
+	if err != nil {
+		return fmt.Errorf("failed to get appointments from database: %w", err)
+	}
+
+	return c.JSON(http.StatusOK, appointments)
+}
+
+// CreateAppointment handles the request and returns , as a response, if the appointment for visiting the pet was created correctly
+func (h Handler) CreateAppointment(c echo.Context, db *database.Database) error {
+	var body domain.Appointment
+	if err := json.NewDecoder(c.Request().Body).Decode(&body); err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, "failed reading request body")
+	}
+	_, err := h.dbMethods.ValidateAppointment(body, db)
+	if err != nil {
+		return err
+	}
+	return c.JSON(http.StatusOK, body)
+}
+
+// DeleteAppointment handles the request, and returns the response, that is an appointment deleted
+func (h Handler) DeleteAppointment(c echo.Context, db *database.Database) error {
+	id := c.Param("id")
+
+	idInt, err := strconv.Atoi(id)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, "invalid ID")
+	}
+	err = h.dbMethods.DeleteAppointmentById(idInt, db)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusNotFound, "failed deleting appointment from database")
+	}
+
+	return c.String(http.StatusOK, "Appointment deleted successfully")
+}
