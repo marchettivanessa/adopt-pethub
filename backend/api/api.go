@@ -1,9 +1,9 @@
 package api
 
 import (
-	"adopt-pethub/database"
-	"adopt-pethub/domain"
-	"adopt-pethub/handler"
+	"adopt-pethub/backend/database"
+	"adopt-pethub/backend/domain"
+	"adopt-pethub/backend/handler"
 
 	"github.com/labstack/echo"
 )

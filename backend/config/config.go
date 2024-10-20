@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"os"
 	"strconv"
 
@@ -33,10 +34,8 @@ type LogConfig struct {
 	EnableReportCaller bool
 }
 
-// TODO after doing some experiments, remove this unnused line
-// func MustParseConfig(envPath, env string) Config {
 func MustParseConfig() Config {
-	err := godotenv.Load(".env")
+	err := godotenv.Load(fmt.Sprintf("%s/.env", os.Getenv("PWD")))
 	if err != nil {
 		log.WithError(err).Warn("failed to load .env file")
 	}

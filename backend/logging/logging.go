@@ -1,7 +1,7 @@
 package logging
 
 import (
-	"adopt-pethub/config"
+	"adopt-pethub/backend/config"
 	"log/syslog"
 
 	log "github.com/sirupsen/logrus"

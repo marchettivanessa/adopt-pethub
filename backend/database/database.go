@@ -1,7 +1,7 @@
 package database
 
 import (
-	"adopt-pethub/config"
+	"adopt-pethub/backend/config"
 	"errors"
 	"fmt"
 
@@ -10,7 +10,6 @@ import (
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 	"github.com/jmoiron/sqlx"
 	log "github.com/sirupsen/logrus"
-
 )
 
 const (

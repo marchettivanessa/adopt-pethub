@@ -1,20 +1,18 @@
 package main
 
 import (
-	"adopt-pethub/config"
-	"adopt-pethub/database"
-	"adopt-pethub/logging"
+	"adopt-pethub/backend/config"
+	"adopt-pethub/backend/database"
+	"adopt-pethub/backend/logging"
 
-	"adopt-pethub/api"
+	"adopt-pethub/backend/api"
+
 	"github.com/labstack/echo"
 	"github.com/labstack/gommon/log"
 )
 
 func main() {
 	//Start config
-	// TODO after doing some experiments, remove these unnused lines
-	// envPath := config.GetEnvOrDefault("ENV_FILE_PATH", ".env")
-	// c := config.MustParseConfig(envPath, "development")
 	c := config.MustParseConfig()
 	// Initializes logging.
 	log.Info("setting up logging")
