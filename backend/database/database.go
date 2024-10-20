@@ -6,10 +6,11 @@ import (
 	"fmt"
 
 	"github.com/golang-migrate/migrate/v4"
-	"github.com/golang-migrate/migrate/v4/database/postgres"
+	migratePostgres "github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
-	"github.com/jmoiron/sqlx"
 	log "github.com/sirupsen/logrus"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 const (
@@ -18,12 +19,15 @@ const (
 
 type Database struct {
 	Config     config.DatabaseConfig
-	Connection *sqlx.DB
+	Connection *gorm.DB
 }
 
+// Função para criar a conexão com o banco de dados usando o GORM
 func newDatabaseConn(dbc config.DatabaseConfig) (*Database, error) {
 	connectionString := buildConnectionString(dbc)
-	databaseConnection, err := sqlx.Open(Postgres, connectionString)
+
+	// Criando a conexão usando GORM e o driver PostgreSQL
+	gormDB, err := gorm.Open(postgres.Open(connectionString), &gorm.Config{})
 	if err != nil {
 		log.Errorf("failed to create the database connection: %v", err)
 		return nil, fmt.Errorf("failed to create the database connection: %w", err)
@@ -31,10 +35,11 @@ func newDatabaseConn(dbc config.DatabaseConfig) (*Database, error) {
 
 	return &Database{
 		Config:     dbc,
-		Connection: databaseConnection,
+		Connection: gormDB,
 	}, nil
 }
 
+// Função para construir a string de conexão
 func buildConnectionString(dbc config.DatabaseConfig) string {
 	return fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s connect_timeout=%d search_path=public,%s sslmode=disable",
 		dbc.Host,
@@ -47,11 +52,16 @@ func buildConnectionString(dbc config.DatabaseConfig) string {
 	)
 }
 
+// Função para executar as migrações, agora usando a conexão do GORM
 func (db *Database) Migrate() error {
-
-	driver, err := postgres.WithInstance(db.Connection.DB, &postgres.Config{})
+	sqlDB, err := db.Connection.DB() // Obtendo a conexão nativa do GORM
 	if err != nil {
-		return fmt.Errorf("failed to create postgres drive: %w", err)
+		return fmt.Errorf("failed to get native DB connection from GORM: %w", err)
+	}
+
+	driver, err := migratePostgres.WithInstance(sqlDB, &migratePostgres.Config{})
+	if err != nil {
+		return fmt.Errorf("failed to create postgres driver: %w", err)
 	}
 
 	migrationFullPath := fmt.Sprintf("file://%s", db.Config.MigrationPath)
@@ -70,6 +80,7 @@ func (db *Database) Migrate() error {
 	return nil
 }
 
+// Função para criar a conexão e executar as migrações
 func NewDatabaseWithMigrations(c config.DatabaseConfig) (*Database, error) {
 	database, err := newDatabaseConn(c)
 	if err != nil {
@@ -82,11 +93,16 @@ func NewDatabaseWithMigrations(c config.DatabaseConfig) (*Database, error) {
 	return database, nil
 }
 
+// Função para resetar as migrações (opcional, depende da sua implementação de migrações)
 func (db *Database) ResetMigration() error {
 	updateStatement := "DROP TABLE IF EXISTS schema_migrations"
-	_, err := db.Connection.Exec(updateStatement)
+	sqlDB, err := db.Connection.DB()
 	if err != nil {
-		return fmt.Errorf("failed reseting migrations: %w", err)
+		return fmt.Errorf("failed to get native DB connection: %w", err)
+	}
+	_, err = sqlDB.Exec(updateStatement)
+	if err != nil {
+		return fmt.Errorf("failed resetting migrations: %w", err)
 	}
 	return nil
 }

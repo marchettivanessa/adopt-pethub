@@ -9,21 +9,15 @@ import (
 )
 
 func RegisterHTTPRoutes(e *echo.Echo, db *database.Database) {
-	nDomain := domain.Domain{}
-	nHandler := handler.NewHandler(nDomain)
+	// Inicializando a lógica de domínio e o handler
+	usuarioService := domain.NewUsuario()
+	uhandler := handler.NewHandler(usuarioService)
+
+	// Handler para pegar usuário por ID
 	getHandler := func(c echo.Context) error {
-		return nHandler.GetAppointments(c, db)
+		return uhandler.GetUsuarioById(c, db)
 	}
 
-	postHandler := func(c echo.Context) error {
-		return nHandler.CreateAppointment(c, db)
-	}
-
-	deleteHandler := func(c echo.Context) error {
-		return nHandler.DeleteAppointment(c, db)
-	}
-
-	e.GET("/appointments", getHandler)
-	e.POST("/appointments", postHandler)
-	e.DELETE("/appointments/:id", deleteHandler)
+	// Definindo as rotas
+	e.GET("/usuarios/:id", getHandler)
 }
