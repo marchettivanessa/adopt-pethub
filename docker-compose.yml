@@ -1,18 +1,16 @@
----
-version: '3.9'
-
 services:
   adopt-pethub:
-    network_mode: "host"
     build:
       context: .
     env_file: .env
+    depends_on:
+      - db
   db:
-    image: postgres:14.1-alpine
+    image: postgres
     restart: always
     environment:
-      - POSTGRES_DB=adopt_pethub
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     ports:
-      - '1223:1223'
+      - '1223:5432'

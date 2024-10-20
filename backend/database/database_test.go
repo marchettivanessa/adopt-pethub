@@ -1,7 +1,7 @@
 package database
 
 import (
-	"adopt-pethub/config"
+	"adopt-pethub/backend/config"
 	"testing"
 
 	. "github.com/onsi/ginkgo"

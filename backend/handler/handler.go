@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"adopt-pethub/database"
-	"adopt-pethub/domain"
+	"adopt-pethub/backend/database"
+	"adopt-pethub/backend/domain"
 	"encoding/json"
 	"fmt"
 	"net/http"

@@ -1,12 +1,12 @@
-FROM golang:1.18
+FROM golang:1.21-alpine
 
-WORKDIR /app
-ARG CONSUMER
+WORKDIR /adopt-pethub
 
-RUN cd ..
 COPY ./go.mod ./go.sum ./
 RUN go mod download
 
 COPY . .
 
-ENTRYPOINT ["/usr/local/go/bin/go", "run", "./adopt-pethub/main.go"]
+WORKDIR /adopt-pethub/backend/main
+ENTRYPOINT ["go", "run", "main.go"]
+

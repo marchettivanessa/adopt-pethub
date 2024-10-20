@@ -1,7 +1,7 @@
 package domain
 
 import (
-	"adopt-pethub/database"
+	"adopt-pethub/backend/database"
 	"errors"
 	"fmt"
 )
