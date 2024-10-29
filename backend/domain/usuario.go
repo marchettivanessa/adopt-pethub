@@ -20,12 +20,12 @@ type Usuario struct {
 
 type usuario struct{}
 
-// Interface para definir o contrato dos métodos de domínio
+// Usuarios define the contract methods for this entity domain
 type Usuarios interface {
 	GetUsuarioById(id int, db *database.Database) (*Usuario, error)
 }
 
-// Função para criar uma nova instância do serviço de usuário
+// Creates a new instance of Usuario
 func NewUsuario() Usuarios {
 	return usuario{}
 }

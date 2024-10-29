@@ -52,9 +52,9 @@ func buildConnectionString(dbc config.DatabaseConfig) string {
 	)
 }
 
-// Função para executar as migrações, agora usando a conexão do GORM
+// Migrate execute migrations, using GORM conection
 func (db *Database) Migrate() error {
-	sqlDB, err := db.Connection.DB() // Obtendo a conexão nativa do GORM
+	sqlDB, err := db.Connection.DB() // Conects with GORM
 	if err != nil {
 		return fmt.Errorf("failed to get native DB connection from GORM: %w", err)
 	}
@@ -80,7 +80,7 @@ func (db *Database) Migrate() error {
 	return nil
 }
 
-// Função para criar a conexão e executar as migrações
+// NewDatabaseWithMigrations creates a db connection and run the migrations
 func NewDatabaseWithMigrations(c config.DatabaseConfig) (*Database, error) {
 	database, err := newDatabaseConn(c)
 	if err != nil {
@@ -93,7 +93,7 @@ func NewDatabaseWithMigrations(c config.DatabaseConfig) (*Database, error) {
 	return database, nil
 }
 
-// Função para resetar as migrações (opcional, depende da sua implementação de migrações)
+// ResetMigration resets migrations
 func (db *Database) ResetMigration() error {
 	updateStatement := "DROP TABLE IF EXISTS schema_migrations"
 	sqlDB, err := db.Connection.DB()

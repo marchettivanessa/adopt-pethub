@@ -19,5 +19,5 @@ func RegisterHTTPRoutes(e *echo.Echo, db *database.Database) {
 	}
 
 	// Definindo as rotas
-	e.GET("/usuarios/:id", getHandler)
+	e.GET("/usuario/:id", getHandler)
 }
