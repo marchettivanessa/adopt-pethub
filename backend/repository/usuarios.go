@@ -7,7 +7,6 @@ import (
 
 type UsuarioRepository struct{}
 
-// Método que busca um usuário pelo ID usando o GORM
 func (u UsuarioRepository) GetUsuarioById(id int, db *database.Database) (*domain.Usuario, error) {
 	var user domain.Usuario
 	if err := db.Connection.First(&user, id).Error; err != nil {

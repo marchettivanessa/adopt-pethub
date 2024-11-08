@@ -14,12 +14,10 @@ type AnimalHandler struct {
 	repository repository.RepositoryAnimaisInterface
 }
 
-// Novo handler para animais
 func NewAnimalHandler(repository repository.RepositoryAnimaisInterface) *AnimalHandler {
 	return &AnimalHandler{repository: repository}
 }
 
-// Método do handler para buscar os animais
 func (h *AnimalHandler) GetAnimais(c echo.Context, db *database.Database) error {
 	animais, err := h.repository.GetAnimais(db)
 	if err != nil {
@@ -41,7 +39,7 @@ func (h *AnimalHandler) InsertAnimal(c echo.Context, db *database.Database) erro
 
 	var animal domain.Animal
 
-	// Bind dos dados para a estrutura Animal
+	// Bind data for Animal entity
 	if err := c.Bind(&animal); err != nil {
 		log.WithFields(map[string]interface{}{
 			"error": err.Error(),

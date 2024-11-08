@@ -7,7 +7,6 @@ import (
 	"github.com/labstack/echo"
 )
 
-// Registrar rotas para animais
 func RegisterAnimalRoutes(e *echo.Echo, db *database.Database) {
 	animalRepo := &repository.RepositoryAnimais{}
 	animalHandler := handler.NewAnimalHandler(animalRepo)

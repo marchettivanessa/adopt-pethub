@@ -13,13 +13,12 @@ type RepositoryAnimais struct {
 	Logger *logrus.Logger
 }
 
-// Interface do repositório para animais
 type RepositoryAnimaisInterface interface {
 	GetAnimais(db *database.Database) ([]domain.Animal, error)
 	InsertAnimal(animal domain.Animal, db *database.Database) error
 }
 
-// Implementação do método GetAnimais
+// Implements GetAnimais
 func (r *RepositoryAnimais) GetAnimais(db *database.Database) ([]domain.Animal, error) {
 	var animais []domain.Animal
 	err := db.Connection.Find(&animais).Error

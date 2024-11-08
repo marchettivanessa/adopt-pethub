@@ -12,22 +12,18 @@ import (
 // Middleware de autenticação JWT
 func AuthMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
-		// Obtém o token do cabeçalho da requisição
 		tokenString := c.Request().Header.Get("Authorization")
 		if tokenString == "" {
 			return echo.NewHTTPError(http.StatusUnauthorized, "Missing token")
 		}
 
-		// Remove o prefixo "Bearer "
 		tokenString = strings.TrimPrefix(tokenString, "Bearer ")
 
-		// Verifica se o token é válido
 		token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
 			// Checar se o token é válido conforme o algoritmo usado (HS256, RS256, etc.)
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 				return nil, echo.NewHTTPError(http.StatusUnauthorized, "Invalid signing method")
 			}
-			// Retorna a chave secreta para verificar a assinatura
 			return []byte(config.MustParseConfig().JWTSecret), nil
 		})
 
@@ -35,7 +31,6 @@ func AuthMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 			return echo.NewHTTPError(http.StatusUnauthorized, "Invalid token")
 		}
 
-		// Caso o token seja válido, chama o próximo handler
 		return next(c)
 	}
 }
