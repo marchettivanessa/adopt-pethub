@@ -15,4 +15,8 @@ func RegisterAnimalRoutes(e *echo.Echo, db *database.Database) {
 	e.GET("/animais", func(c echo.Context) error {
 		return animalHandler.GetAnimais(c, db)
 	})
+
+	e.POST("/animais", func(c echo.Context) error {
+		return animalHandler.InsertAnimal(c, db)
+	})
 }

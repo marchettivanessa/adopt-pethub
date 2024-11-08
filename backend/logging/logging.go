@@ -32,3 +32,7 @@ func InitLogging(c config.LogConfig) {
 		}
 	}
 }
+
+func Logger(fields map[string]interface{}) *log.Entry {
+	return log.WithFields(fields)
+}
