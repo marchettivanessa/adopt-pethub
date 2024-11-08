@@ -12,3 +12,7 @@ type Adocao struct {
 }
 
 type RepositoryAdocao interface {}
+
+func (Adocao) TableName() string {
+    return "adopt_pethub.adocoes"
+}

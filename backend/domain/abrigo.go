@@ -12,3 +12,7 @@ type Abrigo struct {
 }
 
 type RepositoryAbrigo interface {}
+
+func (Abrigo) TableName() string {
+    return "adopt_pethub.abrigos"
+}

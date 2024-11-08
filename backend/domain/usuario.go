@@ -16,3 +16,9 @@ type Usuario struct {
 	UpdatedAt    *time.Time `gorm:"column:updated_at"`
 	DeletedAt    *time.Time `gorm:"column:deleted_at"`
 }
+
+type RepositoryUsuario interface {}
+
+func (Usuario) TableName() string {
+    return "adopt_pethub.usuarios"
+}

@@ -10,3 +10,9 @@ type Feedback struct {
 	UpdatedAt     *string `gorm:"column:updated_at, omitempty"`
 	DeletedAt     *string `gorm:"column:deleted_at, omitempty"`
 }
+
+type RepositoryFeedback interface {}
+
+func (Feedback) TableName() string {
+    return "adopt_pethub.feedback"
+}
