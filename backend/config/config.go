@@ -14,6 +14,7 @@ type Config struct {
 	AppPort  string
 	Database DatabaseConfig
 	Log      LogConfig
+	JWTSecret      string
 }
 
 type DatabaseConfig struct {
@@ -58,6 +59,7 @@ func MustParseConfig() Config {
 			EnableSyslog:       MustParseBool(MustGetEnv("LOG_ENABLE_SYSLOG")),
 			EnableReportCaller: MustParseBool(MustGetEnv("LOG_ENABLE_REPORT_CALLER")),
 		},
+		JWTSecret: MustGetEnv("JWT_SECRET"),
 	}
 }
 
@@ -84,13 +86,3 @@ func MustParseInt(key string) int {
 	}
 	return v
 }
-
-// TODO after doing some experiments, remove this unnused code
-// func GetEnvOrDefault(key, def string) string {
-// 	v := os.Getenv(key)
-// 	if v == "" {
-// 		return def
-// 	}
-
-// 	return v
-// }
