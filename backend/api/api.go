@@ -10,5 +10,6 @@ import (
 func RegisterHTTPRoutes(e *echo.Echo, db *database.Database) {
 	// Chamando a função que registra as rotas de cada domínio
 	RegisterUsuarioRoutes(e, db)
+	RegisterAnimalRoutes(e, db)
 	// RegisterFeedbackRoutes(e, db)
 }
