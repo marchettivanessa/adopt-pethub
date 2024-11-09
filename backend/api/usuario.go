@@ -23,7 +23,7 @@ func RegisterUsuarioRoutes(e *echo.Echo, db *database.Database) {
 
 	e.GET("/usuario/:id", usuarioHandler.GetUsuarioById, middleware.AuthMiddleware)
 	e.GET("/usuarios", usuarioHandler.GetUsuarios, middleware.AuthMiddleware)
-	e.POST("/usuario", usuarioHandler.CreateUsuario) // Autenticação pode ser adicionada ao cadastro se necessário
 	e.POST("/login", usuarioHandler.Login)
+	e.POST("/usuario", usuarioHandler.CreateUsuario)
 
 }

@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"adopt-pethub/backend/config"
 	"adopt-pethub/backend/database"
 	"adopt-pethub/backend/domain"
 	"fmt"
@@ -105,7 +106,7 @@ func (h *UsuarioHandler) Login(c echo.Context) error {
 		"exp": time.Now().Add(time.Hour * 72).Unix(),
 	})
 
-	tokenString, err := token.SignedString([]byte("your_secret_key"))
+	tokenString, err := token.SignedString([]byte(config.MustParseConfig().JWTSecret))
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, "Could not generate token")
 	}
@@ -113,8 +114,12 @@ func (h *UsuarioHandler) Login(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]string{"token": tokenString})
 }
 
-func Hash(senha string) ([]byte, error) {
-	return bcrypt.GenerateFromPassword([]byte(senha), bcrypt.DefaultCost)
+func Hash(senha string) (string, error) {
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(senha), bcrypt.DefaultCost)
+	if err != nil {
+		return "", err
+	}
+	return string(hashedPassword), nil
 }
 
 func (h *UsuarioHandler) ComparePassword(password, hashedPassword string) error {
