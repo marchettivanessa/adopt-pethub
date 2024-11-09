@@ -18,7 +18,8 @@ func NewAnimalHandler(repository repository.RepositoryAnimaisInterface) *AnimalH
 	return &AnimalHandler{repository: repository}
 }
 
-func (h *AnimalHandler) GetAnimais(c echo.Context, db *database.Database) error {
+func (h *AnimalHandler) GetAnimais(c echo.Context) error {
+	db := c.Get("db").(*database.Database)
 	animais, err := h.repository.GetAnimais(db)
 	if err != nil {
 		log := logging.Logger(map[string]interface{} {
@@ -31,7 +32,8 @@ func (h *AnimalHandler) GetAnimais(c echo.Context, db *database.Database) error 
 	return c.JSON(http.StatusOK, animais)
 }
 
-func (h *AnimalHandler) InsertAnimal(c echo.Context, db *database.Database) error {
+func (h *AnimalHandler) InsertAnimal(c echo.Context) error {
+	db := c.Get("db").(*database.Database)
 	log := logging.Logger(map[string]interface{}{
 		"project": "adopt-pethub",
 		"package": "handler",
