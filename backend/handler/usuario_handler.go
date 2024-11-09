@@ -10,20 +10,20 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type UsuarioHandler struct {
-	usuarioDbMethods usuarioInterface
+	usuarioDbMethods Repository
 }
 
-func NewHandler(usuarioDB usuarioInterface) UsuarioHandler {
+func NewHandler(usuarioDB Repository) UsuarioHandler {
 	return UsuarioHandler{
 		usuarioDbMethods: usuarioDB,
 	}
 }
 
-// Definindo a interface que contém o método GetUsuarioById
-type usuarioInterface interface {
+type Repository interface {
 	GetUsuarioById(id int, db *database.Database) (*domain.Usuario, error)
 	GetUsuarios(*database.Database) ([]domain.Usuario, error)
 }
@@ -56,38 +56,50 @@ func (h UsuarioHandler) GetUsuarios(c echo.Context) error {
 	return c.JSON(http.StatusOK, users)
 }
 
-func (h *UsuarioHandler) RegisterUsuario(c echo.Context, db *database.Database) error {
+func (h *UsuarioHandler) CreateUsuario(c echo.Context) error {
 	var newUser domain.Usuario
 	if err := c.Bind(&newUser); err != nil {
 		return c.JSON(http.StatusBadRequest, fmt.Sprintf("Invalid input: %v", err))
 	}
-	// TODO finish this method
-	// Hashing da senha (bcrypt, por exemplo)
-	// Salvar o novo usuário no banco
 
-	// Após salvar, enviar a resposta
+	hashedPassword, err := Hash(newUser.Senha)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, "Failed to hash password")
+	}
+	newUser.Senha = string(hashedPassword)
+
+	db := c.Get("db").(*database.Database)
+	if err := db.Connection.Create(&newUser).Error; err != nil {
+		return c.JSON(http.StatusInternalServerError, "Failed to register user")
+	}
+
+	// Remove password from response
+	newUser.Senha = ""
 	return c.JSON(http.StatusCreated, newUser)
 }
 
-func (h *UsuarioHandler) Login(c echo.Context, db *database.Database) error {
+func (h *UsuarioHandler) Login(c echo.Context) error {
 	var loginUser struct {
 		Email string `json:"email"`
 		Senha string `json:"senha"`
 	}
+	var usuario domain.Usuario
 
-	// Bind request body data
+	// Bind faz a leitura e validação direta do corpo JSON
 	if err := c.Bind(&loginUser); err != nil {
-		return c.JSON(http.StatusBadRequest, fmt.Sprintf("Invalid input: %v", err))
+		return c.JSON(http.StatusBadRequest, "Invalid input")
 	}
 
-	var usuario domain.Usuario
+	db := c.Get("db").(*database.Database)
 	if err := db.Connection.Where("email = ?", loginUser.Email).First(&usuario).Error; err != nil {
 		return c.JSON(http.StatusUnauthorized, "Invalid credentials")
 	}
 
-	// Compare and validate password
+	if err := h.ComparePassword(loginUser.Senha, usuario.Senha); err != nil {
+		return c.JSON(http.StatusUnauthorized, "Invalid credentials")
+	}
 
-	// Generates token
+	// Gerarates the token
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"sub": usuario.ID,
 		"exp": time.Now().Add(time.Hour * 72).Unix(),
@@ -99,4 +111,12 @@ func (h *UsuarioHandler) Login(c echo.Context, db *database.Database) error {
 	}
 
 	return c.JSON(http.StatusOK, map[string]string{"token": tokenString})
+}
+
+func Hash(senha string) ([]byte, error) {
+	return bcrypt.GenerateFromPassword([]byte(senha), bcrypt.DefaultCost)
+}
+
+func (h *UsuarioHandler) ComparePassword(password, hashedPassword string) error {
+	return bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(password))
 }
