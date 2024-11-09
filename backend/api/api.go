@@ -11,4 +11,5 @@ func RegisterHTTPRoutes(e *echo.Echo, db *database.Database) {
 	RegisterUsuarioRoutes(e, db)
 	RegisterAnimalRoutes(e, db)
 	RegisterFeedbackRoutes(e, db)
+	// RegisterAbrigoRoutes(e, db)
 }
