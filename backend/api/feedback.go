@@ -1,22 +1,24 @@
 package api
 
-// import (
-// 	"adopt-pethub/backend/database"
-// 	"adopt-pethub/backend/handler"
-// 	"adopt-pethub/backend/repository"
-// 	"github.com/labstack/echo"
-// )
+import (
+	"adopt-pethub/backend/database"
+	"adopt-pethub/backend/handler"
+	"adopt-pethub/backend/middleware"
+	"adopt-pethub/backend/repository"
 
-// func RegisterFeedbackRoutes(e *echo.Echo, db *database.Database) {
-// 	// Instancia o repositório e o handler de feedback
-// 	feedbackRepo := repository.FeedbackRepository{}
-// 	feedbackHandler := handler.NewFeedbackHandler(feedbackRepo)
+	"github.com/labstack/echo"
+)
 
-// 	// Define as rotas do domínio feedback
-// 	e.POST("/feedback", func(c echo.Context) error {
-// 		return feedbackHandler.CreateFeedback(c, db)
-// 	})
-// 	e.GET("/feedback/:id", func(c echo.Context) error {
-// 		return feedbackHandler.GetFeedbackById(c, db)
-// 	})
-// }
+func RegisterFeedbackRoutes(e *echo.Echo, db *database.Database) {
+	feedbackRepo := &repository.FeedbackRepository{}
+	feedbackHandler := handler.NewFeedbackHandler(feedbackRepo)
+
+	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			c.Set("db", db)
+			return next(c)
+		}
+	})
+	e.GET("/feedback", feedbackHandler.GetFeedbacks, middleware.AuthMiddleware)
+	e.POST("/feedback", feedbackHandler.CreateFeedback, middleware.AuthMiddleware)
+}
