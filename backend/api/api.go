@@ -1,10 +1,9 @@
-// api/router.go
 package api
 
 import (
 	"adopt-pethub/backend/database"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 func RegisterHTTPRoutes(e *echo.Echo, db *database.Database) {

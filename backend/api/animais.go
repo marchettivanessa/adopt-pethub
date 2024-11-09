@@ -6,7 +6,7 @@ import (
 	"adopt-pethub/backend/middleware"
 	"adopt-pethub/backend/repository"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 func RegisterAnimalRoutes(e *echo.Echo, db *database.Database) {
@@ -21,6 +21,5 @@ func RegisterAnimalRoutes(e *echo.Echo, db *database.Database) {
 	})
 
 	e.GET("/animais", animalHandler.GetAnimais, middleware.AuthMiddleware)
-
 	e.POST("/animais", animalHandler.InsertAnimal, middleware.AuthMiddleware)
 }

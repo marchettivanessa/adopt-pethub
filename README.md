@@ -17,6 +17,15 @@ You can run docker-compose up -d in order to start this application.
 
 But you can also run `go run backend/main/main.go` locally and test if DB connection and http server are working as expected.
 
+## Running locally the website
+
+In order to run locally the application, since this webview is static, run:
+````
+npm install -g http-server
+http-server ./adopt_petbub/Website -p 2000
+```
+
+
 ## Debugger:
 VSCode launch.json config example to debug:
 
@@ -38,3 +47,4 @@ VSCode launch.json config example to debug:
     ]
 }
 ```
+

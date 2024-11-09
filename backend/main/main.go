@@ -7,26 +7,26 @@ import (
 
 	"adopt-pethub/backend/api"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
 )
 
 func main() {
 	//Start config
 	c := config.MustParseConfig()
-	// Initializes logging.
+	// Initializes logging
 	log.Info("setting up logging")
 	logging.InitLogging(c.Log)
 
-	// Iniciating database
-	// Initializes the database connection.
+	// Initializes the database connection
 	db, err := database.NewDatabaseWithMigrations(c.Database)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// Inicie o servidor
 	e := echo.New()
+	config.SetupCors(e)
+	// Initialize the server
 	api.RegisterHTTPRoutes(e, db)
 	e.Logger.Fatal(e.Start(":5802"))
 

@@ -5,16 +5,20 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
+
 	"github.com/joho/godotenv"
+
 	log "github.com/sirupsen/logrus"
 )
 
 type Config struct {
-	Env      string
-	AppPort  string
-	Database DatabaseConfig
-	Log      LogConfig
-	JWTSecret      string
+	Env       string
+	AppPort   string
+	Database  DatabaseConfig
+	Log       LogConfig
+	JWTSecret string
 }
 
 type DatabaseConfig struct {
@@ -61,6 +65,15 @@ func MustParseConfig() Config {
 		},
 		JWTSecret: MustGetEnv("JWT_SECRET"),
 	}
+}
+
+func SetupCors(e *echo.Echo) {
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"http://localhost:2000", "http://adopt_pethub.com"},
+		AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE},
+		AllowHeaders: []string{echo.HeaderContentType, echo.HeaderAuthorization},
+	}))
+
 }
 
 func MustGetEnv(key string) string {
