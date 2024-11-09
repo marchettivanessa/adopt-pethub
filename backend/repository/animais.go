@@ -11,8 +11,12 @@ import (
 
 type RepositoryAnimais struct {
 	Logger *logrus.Logger
+	AnimaisDbMethods RepositoryAnimaisInterface
 }
 
+func NewRepositoryAnimais(logger *logrus.Logger) *RepositoryAnimais {
+	return &RepositoryAnimais{}
+}
 type RepositoryAnimaisInterface interface {
 	GetAnimais(db *database.Database) ([]domain.Animal, error)
 	InsertAnimal(animal domain.Animal, db *database.Database) error
