@@ -15,3 +15,8 @@ services:
       JWT_SECRET: ${JWT_SECRET}
     ports:
       - '1223:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
