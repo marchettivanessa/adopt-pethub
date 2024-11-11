@@ -1,8 +1,6 @@
 module adopt-pethub
 
-go 1.22
-
-toolchain go1.22.9
+go 1.21
 
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
@@ -14,6 +12,8 @@ require (
 	gorm.io/driver/postgres v1.5.9
 	gorm.io/gorm v1.25.12
 )
+
+replace github.com/rogpeppe/go-internal v1.13.1 => github.com/rogpeppe/go-internal v1.10.0
 
 require (
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
@@ -45,7 +45,6 @@ require (
 	github.com/golang-migrate/migrate/v4 v4.17.0
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
-	github.com/labstack/echo v3.3.10+incompatible
 	github.com/lib/pq v1.10.9 // indirect
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.33.0
