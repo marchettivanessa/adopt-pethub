@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 	"strconv"
 
@@ -69,11 +70,10 @@ func MustParseConfig() Config {
 
 func SetupCors(e *echo.Echo) {
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"http://localhost:2000", "http://adopt_pethub.com"},
-		AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE},
-		AllowHeaders: []string{echo.HeaderContentType, echo.HeaderAuthorization},
+		AllowOrigins: []string{"http://localhost:2000"},
+		AllowMethods: []string{http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete},
+		AllowHeaders: []string{echo.HeaderContentType, "Authorization"},
 	}))
-
 }
 
 func MustGetEnv(key string) string {
