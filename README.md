@@ -22,7 +22,7 @@ But you can also run `go run backend/main/main.go` locally and test if DB connec
 In order to run locally the application, since this webview is static, run:
 ````
 npm install -g http-server
-http-server ./adopt_petbub/Website -p 2000
+http-server ./Website/ -p 2000 --cors  
 ```
 
 
