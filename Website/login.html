@@ -49,15 +49,18 @@
                     <form id="loginForm" onsubmit="login(event)">
                         <div class="mb-2">
                             <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="email" placeholder="Digite seu email">
+                            <input type="email" class="form-control" id="email" name="email" autocomplete="email" placeholder="Digite seu email"
+                                required="required">
                         </div>
                         <div class="mb-3">
                             <label for="senha" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="senha" placeholder="Digite sua senha">
+                            <input type="password" class="form-control" id="senha" name="senha" autocomplete="current-password"
+                                placeholder="Digite sua senha" required="required">
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Entrar</button>
                         <button type="button" class="btn btn-primary mt-2 w-100">Esqueceu a senha</button>
                     </form>
+
                 </div>
             </div>
         </div>
@@ -72,7 +75,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="Website/login.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>
