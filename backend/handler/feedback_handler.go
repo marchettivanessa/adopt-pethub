@@ -7,7 +7,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 type feedbackHandler struct {
@@ -25,7 +25,7 @@ func NewFeedbackHandler(repo RepositoryFeedback) *feedbackHandler {
 	}
 }
 
-func (h *feedbackHandler) GetFeedbacks(c echo.Context, ) error {
+func (h *feedbackHandler) GetFeedbacks(c echo.Context) error {
 	db := c.Get("db").(*database.Database)
 	feedbacks, err := h.feedbackDbMethods.GetFeedbacks(db)
 	if err != nil {
@@ -46,7 +46,7 @@ func (h *feedbackHandler) CreateFeedback(c echo.Context) error {
 	err := c.Bind(&feedback)
 	if err != nil {
 		log.WithError(err).Error("failed to bind feedback data")
-
+		return c.JSON(http.StatusBadRequest, "Invalid feedback data")
 	}
 
 	err = h.feedbackDbMethods.InsertFeedback(feedback, db)

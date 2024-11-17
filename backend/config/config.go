@@ -2,19 +2,24 @@ package config
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 	"strconv"
 
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
+
 	"github.com/joho/godotenv"
+
 	log "github.com/sirupsen/logrus"
 )
 
 type Config struct {
-	Env      string
-	AppPort  string
-	Database DatabaseConfig
-	Log      LogConfig
-	JWTSecret      string
+	Env       string
+	AppPort   string
+	Database  DatabaseConfig
+	Log       LogConfig
+	JWTSecret string
 }
 
 type DatabaseConfig struct {
@@ -61,6 +66,14 @@ func MustParseConfig() Config {
 		},
 		JWTSecret: MustGetEnv("JWT_SECRET"),
 	}
+}
+
+func SetupCors(e *echo.Echo) {
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"http://localhost:2000"},
+		AllowMethods: []string{http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete},
+		AllowHeaders: []string{echo.HeaderContentType, "Authorization"},
+	}))
 }
 
 func MustGetEnv(key string) string {

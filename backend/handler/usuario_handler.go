@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -111,7 +111,7 @@ func (h *UsuarioHandler) Login(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, "Could not generate token")
 	}
 
-	return c.JSON(http.StatusOK, map[string]string{"token": tokenString})
+	return c.JSON(http.StatusOK, map[string]string{"token": tokenString, "usuario_id": strconv.Itoa(int(usuario.ID))})
 }
 
 func Hash(senha string) (string, error) {

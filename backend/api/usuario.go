@@ -6,7 +6,7 @@ import (
 	"adopt-pethub/backend/middleware"
 	"adopt-pethub/backend/repository"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 func RegisterUsuarioRoutes(e *echo.Echo, db *database.Database) {

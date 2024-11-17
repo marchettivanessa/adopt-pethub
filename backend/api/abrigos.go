@@ -4,7 +4,7 @@ package api
 // 	"adopt-pethub/backend/database"
 // 	"adopt-pethub/backend/middleware"
 
-// 	"github.com/labstack/echo"
+// 	"github.com/labstack/echo/v4"
 // )
 
 // func RegisterAbrigoRoutes(e *echo.Echo, db *database.Database) {
