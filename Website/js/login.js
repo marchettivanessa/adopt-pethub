@@ -22,10 +22,23 @@ function login(event) {
         return response.json();
     })
     .then(data => {
-        const authToken = data.token;
-        console.log('Token:', authToken);
-        localStorage.setItem('authToken', authToken);
-        window.location.href = './principal.html'; // Redireciona para a página principal
+        console.log(data);
+
+        if (data.token) {
+            const authToken = data.token;
+            const usuarioId = data.usuario_id;
+            localStorage.setItem('authToken', authToken);
+            localStorage.setItem('usuario_id', usuarioId);
+            console.log('Token:', authToken);
+            console.log('Usuário:', data.usuario_id);
+            console.log('Usuário:', usuarioId);
+             alert('authToken settado');
+            alert('Token setado com sucesso: ' + data.token);
+            console.log('Token setado no localStorage:', localStorage.getItem('authToken'));
+            window.location.href = './principal.html'; // Redireciona para a página principal
+        } else {
+            console.error('token não recebido');
+        }
     })
     .catch(error => {
         console.error('Erro ao fazer login:', error);
