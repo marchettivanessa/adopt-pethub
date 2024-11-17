@@ -20,6 +20,6 @@ func RegisterAnimalRoutes(e *echo.Echo, db *database.Database) {
 		}
 	})
 
-	e.GET("/animais", animalHandler.GetAnimais, middleware.AuthMiddleware)
+	e.GET("/animais", animalHandler.GetAnimais,)
 	e.POST("/animais", animalHandler.InsertAnimal, middleware.AuthMiddleware)
 }

@@ -89,7 +89,7 @@
                     <div class="form-container w-75">
                         <h4 class="text-center mb-4">Encontrou algum pet que precisa de abrigo? Cadastre-o aqui!</h4>
 
-                        <form action="" enctype="multipart/form-data"  method="POST" onsubmit="cadastroAnimal(event)">
+                        <form action="" id="formCadastroAnimal"  enctype="multipart/form-data"  method="POST">
                             <div class="row mb-6">
                                 <div class="col-md-6">
                                     <label for="nome" class="form-label"></label>
@@ -122,8 +122,8 @@
                                     <label for="sexo" class="form-label"></label>
                                     <select id="sexo" name="sexo" class="form-select" required="required">
                                         <option value="">Sexo</option>
-                                        <option value="Macho">Macho</option>
-                                        <option value="Femea">Fêmea</option>
+                                        <option value="M">M</option>
+                                        <option value="F">F</option>
                                     </select>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                                   </div>
                                   <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" id="castrado" name="castrado" value="option2">
-                                    <label class="form-check-label" for="castrado">Castrado</label>
+                                    <label class="form-check-label" for="castrado">Castrado?</label>
                                   </div>
                                   <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" id="vermifugado" name="vermifugado" value="option3">

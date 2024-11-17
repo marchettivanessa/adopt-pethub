@@ -8,8 +8,10 @@ import (
 	"adopt-pethub/backend/api"
 
 	"github.com/labstack/echo/v4"
-	"github.com/labstack/gommon/log"
+	"github.com/sirupsen/logrus"
 )
+
+var log = logrus.New()
 
 func main() {
 	//Start config
