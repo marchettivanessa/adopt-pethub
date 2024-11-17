@@ -111,7 +111,7 @@ func (h *UsuarioHandler) Login(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, "Could not generate token")
 	}
 
-	return c.JSON(http.StatusOK, map[string]string{"token": tokenString})
+	return c.JSON(http.StatusOK, map[string]string{"token": tokenString, "usuario_id": strconv.Itoa(int(usuario.ID))})
 }
 
 func Hash(senha string) (string, error) {

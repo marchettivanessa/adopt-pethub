@@ -1,10 +1,9 @@
 function login(event) {
-    event.preventDefault(); // Evita o comportamento padrão do formulário
+    event.preventDefault();
 
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
 
-    // Enviar a requisição de login para o backend
     fetch('http://localhost:5802/login', {
         method: 'POST',
         headers: {
@@ -29,13 +28,8 @@ function login(event) {
             const usuarioId = data.usuario_id;
             localStorage.setItem('authToken', authToken);
             localStorage.setItem('usuario_id', usuarioId);
-            console.log('Token:', authToken);
-            console.log('Usuário:', data.usuario_id);
-            console.log('Usuário:', usuarioId);
-             alert('authToken settado');
-            alert('Token setado com sucesso: ' + data.token);
-            console.log('Token setado no localStorage:', localStorage.getItem('authToken'));
-            window.location.href = './principal.html'; // Redireciona para a página principal
+            console.log('Token setado no localStorage:');// maintaining this log for debugging purposes
+            window.location.href = './principal.html';
         } else {
             console.error('token não recebido');
         }
