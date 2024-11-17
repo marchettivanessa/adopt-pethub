@@ -35,7 +35,7 @@ func (r *RepositoryAnimais) GetAnimais(db *database.Database) ([]domain.Animal, 
 func (r *RepositoryAnimais) InsertAnimal(animal domain.Animal, db *database.Database) error {
 	if err := db.Connection.Create(&animal).Error; err != nil {
 		r.Logger.WithFields(logrus.Fields{
-			"animal": animal,
+			"animal": animal.ID,
 			"error":  err.Error(),
 		}).Error("Failed to insert animal into database")
 		return fmt.Errorf("failed to insert animal into database: %w", err)

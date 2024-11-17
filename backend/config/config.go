@@ -72,7 +72,7 @@ func SetupCors(e *echo.Echo) {
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{"http://localhost:2000"},
 		AllowMethods: []string{http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete},
-		AllowHeaders: []string{echo.HeaderContentType, "Authorization"},
+		AllowHeaders: []string{echo.HeaderAuthorization, echo.HeaderContentType},
 	}))
 }
 

@@ -7,8 +7,6 @@
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"> -->
     <style>
         .a1 {
             height: 50px;
@@ -37,6 +35,9 @@
 
         .body {
             background-color: #E0EBE0;
+        }
+        .title {
+            text-align: center;
         }
     </style>
 
@@ -88,13 +89,16 @@
                             <button type="submit" class="btn bt-outline-success">Buscar</button>
                         </div>
                     </form>
+                    <button type="button" class="btn btn-outline-danger pr-3 ms-5 me-5" style="width: 100px;" onclick="logout()">
+                        Sair
+                    </button>
                 </div>
             </nav>
         </div>
 
         <div class="col-12 mt-2 mx-auto a2">
             <div>
-                <h3>Esses são os nossos animais!</h3>
+                <h3 class="title">Esses são os nossos animais!</h3>
                 <p>Olá! Esses são os animais que precisam de novos lares e estão disponíveis, de acordo com as ONGs e
                     abrigos que
                     colaboram conosco! Dê uma boa olhada, e marque uma visitinha para aquecer o seu coração e ajudar um
@@ -102,9 +106,9 @@
                     precisa tanto de um novo lar!</p>
             </div>
         </div>
-
-        <div class="col-2 mt-2 a3">
-            <form id="animal-filter" method="GET">
+        <div class="row">
+                <div class="col-2 mt-2 a3">
+                    <form id="animal-filter" method="GET">
                 <div class="mb-3">
                     <label for="especie" class="form-label">Espécie</label>
                     <select id="especie" name="especie" class="form-select">
@@ -147,114 +151,171 @@
             </form>
         </div>
 
-        <div class="container py-5">
+        <div class="col-10">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="animal-card">
+                        <img src="./Imagens/sofia.jpeg" alt="Aurora, a gata">
+                        <h5 class="mt-2">Aurora</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="animal-card">
+                        <img src="./Imagens/lala.jpeg" alt="Lalá, a puddle">
+                        <h5 class="mt-2">Lala</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="animal-card">
+                        <img src="./Imagens/pierre.jpeg" alt="Cachorro - Pierre">
+                        <h5 class="mt-2">Pierre</h5>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="animal-card">
+                        <img src="./Imagens/pepe-the-dog.jpeg" alt="Pepe, o cachorro">
+                        <h5 class="mt-2">Pepe</h5>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="animal-card">
+                        <img src="./Imagens/tigrao.jpeg" alt="Tigrão">
+                        <h5 class="mt-2">Tigrão</h5>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="animal-card">
+                        <img src="./Imagens/princesa.jpeg" alt="Princesa">
+                        <h5 class="mt-2">Princesa</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="animal-card">
+                        <img src="./Imagens/princesa.jpeg" alt="Princesa">
+                        <h5 class="mt-2">Princesa</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="animal-card">
+                        <img src="./Imagens/brisa.jpeg" alt="Brisa">
+                        <h5 class="mt-2">Brisa</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="animal-card">
+                        <img src="./Imagens/majestade.jpeg" alt="Majestade, o gato">
+                        <h5 class="mt-2">Majestade</h5>
+                    </div>
+                </div>
+                <!-- Adicione mais cards conforme necessário -->
+            </div>
         </div>
-
+        </div>
     </main>
-
+<!-- Footer -->
     <div class="my-5">
         <footer class="text-center text-info">
             <!-- Grid container -->
-            <div class="container ">
+            <div class="container">
                 <!-- Section: Links -->
                 <section class="mt-5">
-                    <!-- Grid row-->
-                    <div class="row text-center d-flex justify-content-center pt-5">
-
-                        <!-- Grid column -->
-                        <div class="col-md-2">
-
+                    <div class="row text-center d-flex justify-content-center pt-3">
+                        <div class="col-md-2 mb-3">
                             <h6 class="text-uppercase font-weight-bold">
-                                <a href="#" class="text-info" data-bs-toggle="tooltip"
-                                    title="Projeto desenvolvido para facilitar a adoção de animais abandonados"><i><img
-                                            width="25" height="25"
-                                            src="https://img.icons8.com/office/40/cat-footprint.png"
-                                            alt="cat-footprint" /> Sobre o projeto</i></a>
+                                <a href="#!" class="text-info">
+                                    <i><img width="25" height="25" src="https://img.icons8.com/office/40/cat-footprint.png"
+                                            alt="cat-footprint" />Sobre o projeto</i>
+                                </a>
                             </h6>
                         </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-2">
+                        <div class="col-md-2 mb-3">
                             <h6 class="text-uppercase font-weight-bold">
-                                <a href="#" class="text-info" data-bs-toggle="tooltip"
-                                    title="Somos uma equipe de desenvolvedores da ETEC Getúlio Vargas"><i><img
-                                            width="25" height="25"
-                                            src="https://img.icons8.com/office/40/cat-footprint.png"
-                                            alt="cat-footprint" /> Quem somos</i></a>
-                        </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-2">
-                            <h6 class="text-uppercase font-weight-bold">
-                                <a href="#!" class="text-info"><i><img width="25" height="25"
-                                            src="https://img.icons8.com/office/40/cat-footprint.png"
-                                            alt="cat-footprint" /> Contato</i></a>
+                                <a href="#!" class="text-info">
+                                    <i><img width="25" height="25" src="https://img.icons8.com/office/40/cat-footprint.png"
+                                            alt="cat-footprint" />Quem somos</i>
+                                </a>
                             </h6>
                         </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-2">
+                        <div class="col-md-2 mb-3">
                             <h6 class="text-uppercase font-weight-bold">
-                                <a href="#!" class="text-info"><i><img width="25" height="25"
-                                            src="https://img.icons8.com/office/40/cat-footprint.png"
-                                            alt="cat-footprint" /> Parcerias</i></a>
+                                <a href="#!" class="text-info">
+                                    <i><img width="25" height="25" src="https://img.icons8.com/office/40/cat-footprint.png"
+                                            alt="cat-footprint" />Contato</i>
+                                </a>
                             </h6>
                         </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-2">
+                        <div class="col-md-2 mb-3">
                             <h6 class="text-uppercase font-weight-bold">
-                                <a href="https://www.webdenuncia.sp.gov.br/depa" class="text-info"><i><img width="25"
-                                            height="25" src="https://img.icons8.com/office/40/cat-footprint.png"
-                                            alt="cat-footprint" /> Denuncie maus tratos em animais</i></a>
+                                <a href="#!" class="text-info">
+                                    <i><img width="25" height="25" src="https://img.icons8.com/office/40/cat-footprint.png"
+                                            alt="cat-footprint" />Parcerias</i>
+                                </a>
                             </h6>
                         </div>
-                        <!-- Grid column -->
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#!" class="text-info">
+                                    <i><img width="25" height="25" src="https://img.icons8.com/office/40/cat-footprint.png"
+                                            alt="cat-footprint" />Denuncie maus tratos em animais</i>
+                                </a>
+                            </h6>
+                        </div>
                     </div>
-                    <!-- Grid row-->
                 </section>
                 <!-- Section: Links -->
 
-                <hr class="my-5" />
+                <hr class="my-4" />
 
                 <!-- Section: Text -->
-                <section class="mb-5">
+                <section class="mb-4">
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-8">
-                            <p>Esse é um projeto desenvolvido para facilitar a doação de animais abandonados
+                            <p class="lead">Esse é um projeto desenvolvido para facilitar a doação de animais abandonados.
                             </p>
                         </div>
                     </div>
                 </section>
+                <!-- Section: Text -->
 
+                <!-- Section: Social -->
+                <section class="text-center mb-4">
+                    <a href="" class="text-white me-4">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="text-white me-4">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="text-white me-4">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="text-white me-4">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="" class="text-white me-4">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="" class="text-white me-4">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </section>
+                <!-- Section: Social -->
             </div>
             <!-- Grid container -->
 
             <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: #e0ebe000">
-                © 2024 Copyright:
-                <a class="text-info" href="https://mdbootstrap.com/">Grupo de TCC Etec GV</a>
+            <div class="text-center p-3" style="background-color: #f8f9fa;">
+                <span style="color: #333;">© 2024 Copyright: <a class="text-info"
+                        href="https://github.com/marchettivanessa/adopt-pethub">Grupo de TCC
+                        Etec GV</a></span>
             </div>
             <!-- Copyright -->
         </footer>
     </div>
-    <!-- <script>
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-    </script> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-            crossorigin="anonymous"></script>
+    <script src="./js/principal.js"></script>
+    <script src="./js/logout.js"></script>
 </body>
 
 </html>

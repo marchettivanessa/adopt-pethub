@@ -30,6 +30,7 @@
 </head>
 
     <body style="background-color: #E0EBE0; padding: 30px;">
+        <div class="">
             <nav style="background-color: #E0EBE0;" class="navbar bg-light navbar-expand-sm ms-auto">
                 <div class="container-fluid">
                     <a href="principal.html" class="navbar-brand d-flex align-items-center">
@@ -66,6 +67,7 @@
                                     Cadastro do usuário
                                 </button>
                             </a>
+
                         </div>
                     </div>
                     <form action="" class="d-flex">
@@ -73,10 +75,15 @@
                             <input type="search" name="buscar" id="buscar" class="form-control rounded-start"
                                 placeholder="Buscar...">
                             <button type="submit" class="btn btn-outline-success rounded-end">Buscar</button>
+
                         </div>
                     </form>
                 </div>
+                <button type="button" class="btn btn-outline-danger pr-3 ms-5 me-5" style="width: 100px;" onclick="logout()">
+                    Sair
+                </button>
             </nav>
+        </div>
         <main style="background-color: #E0EBE0;">
             <div class="col-12 mt-2 mx-auto a2">
                 <div class="col-12 mt-2 mx-auto form-container">
@@ -116,5 +123,6 @@
         </main>
         <script src="./js/auth.js"></script>
         <script src="./js/feedback.js"></script>
+        <script src="./js/logout.js"></script>
     </body>
 </html>
