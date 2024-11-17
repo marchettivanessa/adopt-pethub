@@ -47,8 +47,6 @@ func (h *AnimalHandler) InsertAnimal(c echo.Context) error {
 		"function": "InsertAnimal",
 	})
 
-	log.Info("Recebendo requisição para cadastrar animal")
-
 	if c.Request().ContentLength == 0 {
 		log.Error("Nenhum dado recebido na requisição")
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": "Nenhum dado recebido"})
