@@ -11,6 +11,7 @@ function cadastroAnimal(event) {
         vermifugado: document.getElementById('vermifugado').checked,
         castrado: document.getElementById('castrado').checked,
         descricao: document.getElementById('descricao').value,
+        foto_url: document.getElementById('foto_url').value,
         data_cadastro: new Date(),
     };
 
