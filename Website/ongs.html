@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre ONGs de Proteção Animal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar-search input.form-control {
+        border: 1px solid #ccc; /* Contorno cinza claro */
+        box-shadow: none; /* Remove sombras */
+        }
+
+        .navbar-search button.btn {
+          border: 1px solid #ccc; /* Mesmo contorno do campo de texto */
+          box-shadow: none; /* Remove sombras */
+        }
+        .a3{
+            height: 450px;
+        }
+        .btnWidth{
+            width: 100px;
+            height: 100px;
+        }
+
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h1 {
+            color: #495057;
+            margin-bottom: 20px;
+        }
+
+        .content-section img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #6c757d;
+             text-align: justify;
+        }
+
+        .content-section a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .content-section a:hover {
+            text-decoration: underline;
+        }
+
+        .ong-list h5 {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 40px;
+            background-color: #343a40;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .ongs-title {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <div style="padding: 30px;" class="">
+            <nav class="navbar bg-light navbar-expand-sm ms-auto">
+                <div class="container-fluid">
+                <a href="principal.html" class="navbar-brand d-flex align-items-center">
+                    <i><img width="100" height="100" src="Imagens/logo.png" alt="pet" /> Patinhas à procura</i>
+                </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="menuNavbar">
+                        <div class="navbar-nav">
+                            <a href="cadastroAnimal.html" class="nav-link"><i><img width="48" height="48"
+                                        src="https://img.icons8.com/color/48/cat-caregivers.png" alt="cat-caregivers" />
+                                    Cadastre um animal</i></a>
+                            <a href="contatoDoador.html" class="nav-link"><i><img width="48" height="48"
+                                        src="https://img.icons8.com/doodle/48/talk-female.png" alt="talk-female" /> Fale com o
+                                    doador</i></a>
+                            <a href="visita.html" class="nav-link"><i><img width="48" height="48"
+                                        src="https://img.icons8.com/dusk/64/planning-skill.png" alt="planning-skill" /> Agende
+                                    uma visita</i></a>
+                            <a href="feedback.html" class="nav-link"><i><img width="48" height="48"
+                                        src="https://img.icons8.com/?size=100&id=52209&format=png&color=000000"
+                                        alt="planning-skill" /> Deixe sua Avaliação</i></a>
+                            <a href="./ongs.html" class="nav-link"><i><img width="48" height="48"
+                                        src="https://img.icons8.com/dusk/64/list--v1.png" alt="list--v1" /> Organizações de
+                                    proteção animal</i></a>
+                            <a href="login.html">
+                                <button type="submit" class="btn btn-outline-primary pr-3 ms-5 me-5 btnWidth">
+                                    Login
+                                </button>
+                            </a>
+                            <a href="./cadastroUsuario.html">
+                                <button type="submit" class="btn btn-outline-primary pr-3 btnWidth">
+                                    Cadastro do usuário
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <form action="" class="d-flex">
+                        <div class="input-group ms-3">
+                            <input type="search" name="buscar" id="buscar" class="form-control rounded-start"
+                                placeholder="Buscar">
+                            <button type="submit" class="btn btn-outline-success rounded-end">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+            </div>
+    <!-- Main Content -->
+    <section class="content-section">
+        <h1 class="text-center ongs-title">A Importância das ONGs de Proteção Animal</h1>
+        <img src="Imagens/gato-filhote-gaiola-petlove.jpg" alt="Gato Filhote" class="d-block mx-auto">
+        <p>
+            As ONGs de proteção animal desempenham um papel essencial na sociedade ao garantir o bem-estar de milhões de animais
+            que, sem elas, estariam expostos a maus-tratos, abandono e até à extinção. Essas organizações atuam de forma
+            independente, muitas vezes sem recursos governamentais, e são fundamentais para resgatar animais em situação de risco,
+            fornecer cuidados médicos, promover adoção responsável e, principalmente, conscientizar a população sobre a importância
+            do respeito e da proteção aos animais.
+        </p>
+        <p>
+            A atuação das ONGs é diversificada e abrange desde o resgate de animais domésticos abandonados até a preservação de
+            espécies selvagens ameaçadas. No ambiente urbano, por exemplo, cães e gatos abandonados enfrentam condições precárias de
+            sobrevivência, sujeitos à fome, doenças e acidentes. As ONGs oferecem abrigos temporários e tratamentos veterinários,
+            muitas vezes com recursos limitados e por meio do trabalho voluntário. Elas também promovem campanhas de adoção,
+            ajudando a encontrar novos lares e proporcionando uma segunda chance a esses animais.
+        </p>
+        <p>
+            Além disso, muitas ONGs se dedicam à educação e à conscientização ambiental. Elas trabalham para informar o público
+            sobre a importância da castração para controlar a população de animais de rua, bem como da adoção responsável,
+            desincentivando o comércio irresponsável de animais. Com programas educativos, essas organizações ajudam a criar uma
+            cultura de respeito e cuidado com os animais desde a infância, promovendo um futuro mais compassivo e ético.
+        </p>
+        <p>
+            Outro ponto relevante é a proteção das espécies ameaçadas. ONGs de proteção animal e ambiental se unem para combater o
+            tráfico de animais silvestres, a destruição de habitats naturais e outros fatores que colocam em risco diversas
+            espécies. Em regiões de alta biodiversidade, como a Amazônia, essas organizações são responsáveis por fiscalizar e
+            proteger áreas e espécies vulneráveis, mantendo o equilíbrio dos ecossistemas.
+        </p>
+        <p>
+            Em resumo, as ONGs de proteção animal são essenciais para a construção de uma sociedade mais justa e equilibrada, não só
+            para os animais, mas para toda a natureza. Elas dependem do apoio da população e do governo para continuar seu trabalho
+            e precisam de doações e voluntariado. Investir nessas organizações é, acima de tudo, um investimento em uma sociedade
+            mais ética e responsável, onde o bem-estar animal é reconhecido como um valor essencial.
+        </p>
+        <p>
+            Em vista disso, aqui estão algumas ONGS que ajudam na causa animal:
+        </p>
+
+        <div class="ong-list">
+            <h3 class="ongs-title">1 – Cão Sem Dono</h3>
+            <p>
+                O Cão Sem Dono é uma ONG (Organização Não Governamental), que nasceu de um grande sonho do seu
+                atual presidente: tirar o maior número possível de animais das ruas, dar tratamento adequado e integrá-los a famílias
+                que lhes deem amor, carinho e uma vida digna.
+                <br>
+                Foi criada informalmente em 2005 na cidade de São Paulo. Seu estatuto foi lançado e registrado em 23 de Abril de 2008,
+                mesmo dia em que obteve seu CNPJ.</p>
+                <p>
+                    Atualmente a ONG mantém 2 abrigos (a sede fica em Itapecerica da Serra, SP) com 450 animais que são constantemente
+                    tratados por veterinários, alimentados com ração de boa qualidade, bebem água potável, dormem em abrigos especialmente construídos e são tratados com muito amor e carinho por todos os
+                    funcionários e voluntários que estão sempre visitando as instalações onde ficam os cães.
+                </p>
+                <p>
+                    Sua equipe é formada por Presidente, Diretores e 33 colaboradores entre tratadores, veterinários, auxiliares de
+                    veterinária, equipe do Bazar, equipe de resgate e a equipe do escritório.
+                </p>
+                <p><strong>Site:</strong> <a href="https://www.caosemdono.com.br/">https://www.caosemdono.com.br/</a>
+                </p>
+                <p><strong>Localização:</strong> São Paulo, SP</p>
+            </p>
+
+            <h3 class="ongs-title">2 – Cão Sem Fome</h3>
+                <p>
+                    O projeto Cão Sem Fome, fundado em 2011 em São Paulo, é uma iniciativa de proteção animal que se dedica a combater a
+                    fome de cães e gatos em situação de abandono e vulnerabilidade. O projeto atua principalmente em áreas de alta pobreza,
+                    fornecendo ração e suporte para famílias de baixa renda que cuidam desses animais, além de promover castração, vacinação
+                    e cuidados médicos essenciais.
+                </p>
+                <p>
+                    O projeto Cão Sem Fome, fundado em 2011 em São Paulo, é uma iniciativa de proteção animal que se dedica a combater a
+                    fome de cães e gatos em situação de abandono e vulnerabilidade. O projeto atua principalmente em áreas de alta pobreza,
+                    fornecendo ração e suporte para famílias de baixa renda que cuidam desses animais, além de promover castração, vacinação
+                    e cuidados médicos essenciais.
+                </p>
+                <p>
+                    <strong>Site:</strong> <a href="https://projetocaosemfome.com/">https://projetocaosemfome.com/</a>
+                </p>
+                <p>
+                    <strong>Localização:</strong> São Paulo, SP </p>
+            </p>
+            <h3 class="ongs-title">3 - Associação Focinhos de Luz</h3>
+            <p>
+                A Associação Focinhos de Luz é uma organização sem fins lucrativos que luta pela reintrodução de animais abandonados à
+                sociedade, criada em 2010. Construída por apaixonados pela causa animal e inconformados com o abandono recorrente, a
+                nossa casa de passagem abriga em torno de 100 animais, que passam por cuidados até estarem aptos a adoção, onde podem
+                finalmente encontrar um lar definitivo e amoroso.
+            </p>
+            <p>
+                <strong>Site:</strong> <a href="https://www.focinhosdeluz.com/quem-somos">https://www.focinhosdeluz.com/quem-somos</a>
+            </p>
+            <p>
+                <strong>Localização:</strong> Sapetiba, RJ
+            </p>
+            <h3 class="ongs-title">4 - Ampara Animal</h3>
+            <p>
+                É uma organização não-governamental sem fins lucrativos, 100% brasileira, fundada e dirigida por mulheres visionárias.
+                Foi criada em 2010 e em 2013 recebeu do Ministério da Justiça o título de OSCIP (organização da sociedade civil de
+                interesse público), comprovando a seriedade e transparência da organização.
+            </p>
+            <p>
+            Em 2015 a organização se tornou a maior e mais importante organização de proteção e defesa animal do Brasil, e no ano de
+            2019 eles entraram para a lista das 100 melhores ONGs do país, sendo destaque na região sudeste. <br>
+            A missão é ONG é transformar a sociedade através de ações ativas e preventivas focadas em advocacy, educação e
+            sensibilização sobre os direitos dos animais.
+            </p>
+            <p>
+                <strong>Site:</strong> <a href="https://amparanimal.org.br/">https://amparanimal.org.br/</a>
+            </p>
+            <p>
+                <strong>Localização:</strong> Atuação nacional.
+            </p>
+            <h3 class="ongs-title">5 - Amigos de São Francisco</h3>
+            <p>
+                A Amigos de São Francisco é outra ONG de animais que, além de cachorros, abriga também os felinos. O abrigo deles está
+                localizado na cidade de Ibiúna, no interior de São Paulo, e eles promovem constantemente várias feiras de adoção em São
+                Paulo, capital.
+            </p>
+            <p>
+                <strong>Site:</strong> <a href="https://www.amigosdesaofrancisco.com.br/">https://www.amigosdesaofrancisco.com.br/</a>
+            </p>
+            <p>
+                <strong>Localização:</strong> São Paulo, SP.
+            </p>
+            <h3 class="ongs-title">6 - Projeto Tamar</h3>
+            <p>
+                Criada em 1980, o Projeto Tamar é uma ONG dedicada à preservação das tartarugas marinhas no Brasil. Os voluntários
+                realizam pesquisas, monitoramento das praias de desova, resgate de filhotes e atividades de educação ambiental. A
+                organização atua em 22 localidades espalhadas pelo país.
+            </p>
+            <p>
+                <strong>Site:</strong> <a href="https://www.tamar.org.br/">https://www.tamar.org.br/</a>
+            </p>
+            <p>
+                <strong>Localização:</strong> Atuação nacional.
+            </p>
+            <h3 class="ongs-title">7 - Irmão Animal</h3>
+            <p>
+            Desde a sua fundação em 2008, estimamos ter ajudado de forma direta e indiretamente mais de 2000 animais, entre a cura,
+            reestabelecimento comportamental a ganharem lares harmoniosos. Assumimos pela vida e destino, o compromisso de ajudar a
+            transformar vidas, humanas, caninas e felinas, desta forma, um grupo de voluntários oferta-se diariamente da forma que
+            podem, para o serviço de orientação e educação sobre guarda responsável de animais doméstico.
+            </p>
+            <p>
+                <strong>Site:</strong> <a href="https://irmaoanimal.com/">https://irmaoanimal.com/</a>
+            </p>
+            <p>
+                <strong>Localização:</strong> Angra dos Reis, RJ.
+            </p>
+            <h3 class="ongs-title">8 - Oito Vidas</h3>
+            <p>
+                “Defendemos os animais com unhas e dentes. Lutamos para construir um futuro melhor para todos os animais (racionais ou
+                não). Usamos todas as armas que dispomos para levar a informação a todos os lugares.
+            </p>
+            <p>
+            Nosso sonho é que os seres humanos tratem com respeito e compaixão todos os seres vivos com quem dividimos este planeta.
+            Mas, enquanto isso não acontece, trabalhamos para que todos os animais abandonados ou vítimas de maus tratos possam ter
+            uma nova chance… Uma nova vida.
+            </p>
+            <p>
+                O nome OITO VIDAS nasceu exatamente do nosso desejo de dar uma vida nova para gatos em situação de abandono ou de risco.
+                A inspiração veio das sete vidas que, conta a lenda, os gatinhos têm. <br>
+                Os gatos que recebem uma nova chance de recomeçar utilizam a sua oitava vida. Essa oitava vida só depende de nós.”
+            </p>
+            <p>
+                <strong>Site:</strong> <a href="https://www.oitovidas.org.br/">https://www.oitovidas.org.br/</a>
+            </p>
+            <p>
+                <strong>Localização:</strong> Rio de Janeiro, RJ.
+            </p>
+            <h3 class="ongs-title">9 - Instituto Vida Livre</h3>
+            <p>
+                O Instituto Vida Livre nasceu da paixão e da pesquisa científica de Roched Seba, seu criador que ao longo do tempo foi
+                somando esforços com mais pessoas e instituições que compartilham do mesmo empenho e missão do Instituto: fazer livres e
+                conhecidos e conhecidos os animais silvestres brasileiros.
+            </p>
+            <p>
+                O Instituto nasceu como conceito no universo acadêmico da engenharia de produção na Coppe-UFRJ. E foi em parceria com o
+                cantor Ney Matogrosso, o primeiro patrono da Instituição, que em março de 2015, o Vida Livre inicia suas operações, a
+                partir da criação da Área de Soltura de Animais Silvestres - ASAS Vida Livre Serra do Matogrosso em Saquarema-RJ, desde
+                então gerida pelo Instituto Vida Livre.
+            </p>
+            <p>
+                <strong>Site:</strong> <a href="https://www.institutovidalivre.org/">https://www.institutovidalivre.org/</a>
+            </p>
+            <p>
+                <strong>Localização:</strong> Saquarema, RJ.
+            </p>
+            <h3 class="ongs-title">10 - Associação Mico-Leão Dourado</h3>
+            <p>
+                A Associação Mico-Leão-Dourado (AMLD) é uma organização brasileira sem fins lucrativos fundada em 1992, dedicada à
+                conservação do mico-leão-dourado, uma das espécies mais ameaçadas de extinção e endêmica da Mata Atlântica. Com sede no
+                Rio de Janeiro, a AMLD trabalha em áreas da Reserva Biológica de Poço das Antas e do município de Silva Jardim, onde
+                desenvolve programas de conservação que incluem o monitoramento da população de micos, reflorestamento para ampliar e
+                conectar fragmentos de mata, educação ambiental e pesquisas científicas. <br> Além disso, a Associação promove campanhas de
+                conscientização e parcerias para envolver a sociedade e os proprietários de terra na proteção do habitat do
+                mico-leão-dourado, reforçando a importância da biodiversidade e da preservação da Mata Atlântica. A AMLD é reconhecida
+                nacional e internacionalmente pelo impacto positivo de seus projetos, que ajudaram a aumentar a população de micos e a
+                proteger seu habitat natural.
+            </p>
+            <p>
+                <strong>Site:</strong> <a href="https://micoleao.org.br/onde-estamos-a-sede//">https://www.assocmld.org.br/</a>
+            </p>
+            <p>
+                <strong>Localização:</strong> Rio de Janeiro, RJ.
+            </p>
+
+
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Patinhas à Procura. Todos os direitos reservados.
+    </footer>
+    </main>
+</body>
+
+</html>

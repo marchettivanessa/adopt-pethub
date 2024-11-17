@@ -20,56 +20,63 @@
             text-align: center;
             margin-bottom: 20px;
         }
+        .btnWidth{
+            width: 100px;
+            height: 100px;
+            margin-left: 10px; /* Espaço entre os botões */
+            margin-right: 10px; /* Espaço entre os botões */
+        }
     </style>
 </head>
 
-    <body style="background-color: #E0EBE0;">
-        <nav class="navbar bg-light navbar-expand-sm ms-auto">
-            <div class="container-fluid">
-                <a href="principal.html" class="navbar-brand d-flex align-items-center">
-                    <i><img width="100" height="100" src="Imagens/logo.png" alt="pet" /> Patinhas à procura</i>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-center" id="menuNavbar">
-                    <div class="navbar-nav">
-                        <a href="cadastroAnimal.html" class="nav-link"><i><img width="48" height="48"
-                                    src="https://img.icons8.com/color/48/cat-caregivers.png" alt="cat-caregivers" /> Cadastre um
-                                animal</i></a>
-                        <a href="contatoDoador.html" class="nav-link"><i><img width="48" height="48"
-                                    src="https://img.icons8.com/doodle/48/talk-female.png" alt="talk-female" /> Fale com o
-                                doador</i></a>
-                        <a href="visita.html" class="nav-link"><i><img width="48" height="48"
-                                    src="https://img.icons8.com/dusk/64/planning-skill.png" alt="planning-skill" /> Agende uma
-                                visita</i></a>
-                        <a href="feedback.html" class="nav-link"><i><img width="48" height="48"
-                                    src="https://img.icons8.com/?size=100&id=52209&format=png&color=000000"
-                                    alt="planning-skill" /> Deixe sua Avaliação</i></a>
-                        <a href="#" class="nav-link"><i><img width="48" height="48"
-                                    src="https://img.icons8.com/dusk/64/list--v1.png" alt="list--v1" /> Organizações de proteção
-                                animal</i></a>
-                        <a href="login.html">
-                            <button type="submit" class="btn btn-outline-primary pr-3 ms-5 me-5 btnWidth">
-                                Login
-                            </button>
-                        </a>
-                        <a href="./cadastroUsuario.html">
-                            <button type="submit" class="btn btn-outline-primary pr-3 btnWidth">
-                                Cadastro do usuário
-                            </button>
-                        </a>
+    <body style="background-color: #E0EBE0; padding: 30px;">
+            <nav style="background-color: #E0EBE0;" class="navbar bg-light navbar-expand-sm ms-auto">
+                <div class="container-fluid">
+                    <a href="principal.html" class="navbar-brand d-flex align-items-center">
+                        <i><img width="100" height="100" src="Imagens/logo.png" alt="pet" /> Patinhas à procura</i>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="menuNavbar">
+                        <div class="navbar-nav">
+                            <a href="cadastroAnimal.html" class="nav-link"><i><img width="48" height="48"
+                                        src="https://img.icons8.com/color/48/cat-caregivers.png" alt="cat-caregivers" /> Cadastre um
+                                    animal</i></a>
+                            <a href="contatoDoador.html" class="nav-link"><i><img width="48" height="48"
+                                        src="https://img.icons8.com/doodle/48/talk-female.png" alt="talk-female" /> Fale com o
+                                    doador</i></a>
+                            <a href="visita.html" class="nav-link"><i><img width="48" height="48"
+                                        src="https://img.icons8.com/dusk/64/planning-skill.png" alt="planning-skill" /> Agende uma
+                                    visita</i></a>
+                            <a href="feedback.html" class="nav-link"><i><img width="48" height="48"
+                                        src="https://img.icons8.com/?size=100&id=52209&format=png&color=000000"
+                                        alt="planning-skill" />
+                                    Deixe sua Avaliação</i></a>
+                            <a href="./ongs.html" class="nav-link"><i><img width="48" height="48"
+                                        src="https://img.icons8.com/dusk/64/list--v1.png" alt="list--v1" /> Organizações de proteção
+                                    animal</i></a>
+                            <a href="login.html">
+                                <button type="submit" class="btn btn-outline-primary pr-3 ms-5 me-5 btnWidth">
+                                    Login
+                                </button>
+                            </a>
+                            <a href="./cadastroUsuario.html">
+                                <button type="submit" class="btn btn-outline-primary pr-3 btnWidth">
+                                    Cadastro do usuário
+                                </button>
+                            </a>
+                        </div>
                     </div>
+                    <form action="" class="d-flex">
+                        <div class="input-group ms-3">
+                            <input type="search" name="buscar" id="buscar" class="form-control rounded-start"
+                                placeholder="Buscar...">
+                            <button type="submit" class="btn btn-outline-success rounded-end">Buscar</button>
+                        </div>
+                    </form>
                 </div>
-
-                <form action="" class="d-flex">
-                    <div class="input-group">
-                        <input type="search" name="buscar" id="buscar" class="form-control  ms-3" placeholder="Buscar...">
-                        <button type="submit" class="btn bt-outline-success btnWidth ">Buscar</button>
-                    </div>
-                </form>
-            </div>
-        </nav>
+            </nav>
         <main style="background-color: #E0EBE0;">
             <div class="col-12 mt-2 mx-auto a2">
                 <div class="col-12 mt-2 mx-auto form-container">
